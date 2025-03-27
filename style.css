@@ -1,0 +1,56 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header, footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    background-color: #007bff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+a:hover {
+    background-color: #0056b3;
+}
+
+section {
+    padding: 20px;
+}
+
+.carro {
+    background-color: #e2e2e2;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 8px;
+}
+
+.carro h2 {
+    margin: 0;
+}
+
+.carro p {
+    font-size: 1.2em;
+}
+
+footer a {
+    margin-top: 20px;
+    display: inline-block;
+}
