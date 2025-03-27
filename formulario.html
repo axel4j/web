@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido de Pizzas</title>
+    <style>
+        /* Estilos Generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .pizza-image {
+            width: 100px;
+            height: auto;
+            margin-left: 10px;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pedido de Pizzas</h1>  
+        <form id="formulario">
+            <h2>Orden de venta</h2>
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required minlength="3" maxlength="15"><br><br>
+            
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required><br><br>
+            
+            <h2>Pedido de Pizzas</h2>
+            <label for="pizza1">Pizza 1:</label>
+            <select id="pizza1" name="pizza1">
+                <option value="Mexicana">Mexicana ($10)</option>
+                <option value="Pepperoni">Pepperoni ($12)</option>
+                <option value="Hawaiana">Hawaiana ($11)</option>
+            </select>
+            <img src="mex.jpeg" class="pizza-image"><br><br>
+
+            <label for="pizza2">Pizza 2:</label>
+            <select id="pizza2" name="pizza2">
+                <option value="Mexicana">Mexicana ($10)</option>
+                <option value="Pepperoni">Pepperoni ($12)</option>
+                <option value="Hawaiana">Hawaiana ($11)</option>
+            </select>
+            <img src="pepe.jpg" class="pizza-image"><br><br>
+
+            <label for="pizza3">Pizza 3:</label>
+            <select id="pizza3" name="pizza3">
+                <option value="Mexicana">Mexicana ($10)</option>
+                <option value="Pepperoni">Pepperoni ($12)</option>
+                <option value="Hawaiana">Hawaiana ($11)</option>
+            </select>
+            <img src="hawaina.webp" class="pizza-image"><br><br>
+
+            <h2>Complementos</h2>
+            <h4 style="display: inline">Queso Extra</h4>
+            <input type="checkbox" name="QuesoExt" id="QuesoExt">
+              
+            <h4 style="display: inline">Refresco</h4>
+            <input type="checkbox" name="Refresco" id="Refresco">
+              
+            <h4 style="display: inline">Orilla de Queso</h4>
+            <input type="checkbox" name="OrQueso" id="OrQueso">
+              
+            <h4 style="display: inline">Papas</h4>
+            <input type="checkbox" name="Papas" id="Papas">
+
+            <h2>Metodo de entrega</h2>
+            <h4 style="display: inline">Consumo local</h4>
+            <input type="radio" name="entrega" id="ConsLocal" value="Consumo local">
+            
+            <h4 style="display: inline">Envio a domicilio</h4>
+            <input type="radio" name="entrega" id="Envio" value="Envio a domicilio">
+            
+            <br><br>
+            <button type="button" onclick="guardarDatos()">ENVIAR PEDIDO</button>
+        </form>
+    </div>
+
+    <script>
+        function guardarDatos() {
+            let nombre = document.getElementById('name').value;
+            let fecha = document.getElementById('fecha').value;
+            let pizza1 = document.getElementById('pizza1').value;
+            let pizza2 = document.getElementById('pizza2').value;
+            let pizza3 = document.getElementById('pizza3').value;
+            let metodoEntrega = document.querySelector('input[name="entrega"]:checked')?.value;
+
+            // Calcular total
+            let precios = { "Mexicana": 10, "Pepperoni": 12, "Hawaiana": 11 };
+            let total = precios[pizza1] + precios[pizza2] + precios[pizza3];
+
+            // Guardar extras seleccionados
+            let quesoExtra = document.getElementById('QuesoExt').checked ? 2 : 0;
+            let refresco = document.getElementById('Refresco').checked ? 1.5 : 0;
+            let orillaQueso = document.getElementById('OrQueso').checked ? 2.5 : 0;
+            let papas = document.getElementById('Papas').checked ? 3 : 0;
+
+            let extras = quesoExtra + refresco + orillaQueso + papas;
+            total += extras;
+
+            // Validación de campos vacíos
+            if (!nombre || !fecha || !pizza1 || !pizza2 || !pizza3 || !metodoEntrega) {
+                alert("Por favor, complete todos los campos.");
+                return;
+            }
+
+            // Guardar todos los datos en localStorage
+            localStorage.setItem('nombre', nombre);
+            localStorage.setItem('fecha', fecha);
+            localStorage.setItem('pizza1', pizza1);
+            localStorage.setItem('pizza2', pizza2);
+            localStorage.setItem('pizza3', pizza3);
+            localStorage.setItem('metodoEntrega', metodoEntrega);
+            localStorage.setItem('total', total);
+
+            // Redirigir a la página correcta según el método de entrega
+            if (metodoEntrega === "Consumo local") {
+                window.location.href = 'envio2.html';  // Redirige a envio2.html si selecciona "Consumo local"
+            } else if (metodoEntrega === "Envio a domicilio") {
+                window.location.href = 'datos.html';  // Redirige a datos.html si selecciona "Envio a domicilio"
+            }
+        }
+    </script>
+</body>
+</html>

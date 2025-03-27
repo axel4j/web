@@ -3,13 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Concesionaria de Autos</title>
+    <title>Seleccionar Trabajo</title>
 </head>
 <body>
 
-    <h1>Bienvenido a la Concesionaria de Autos</h1>
-    <p>Explora nuestra amplia gama de autos. ¡Elige el que más te guste!</p>
-    <a href="menu.html">Entrar al Menú de Autos</a>
+    <h1>BIENVENIDO </h1>
+    <h2>selecciona la opcion de tu agrado</h2>
+    <div class="container">
+        <form id="trabajoForm" action="" method="post">
+            <label>
+                <input type="radio" name="trabajo" value="pizzeria" id="pizzeria"> Pizzería
+            </label>
+            <label>
+                <input type="radio" name="trabajo" value="concesionaria" id="concesionaria"> Concesionaria
+            </label>
+            <br>
+            <button type="button" class="submit-btn" onclick="redireccionar()">Enviar</button>
+        </form>
+    </div>
+
+    <script>
+        function redireccionar() {
+            const pizzeria = document.getElementById('pizzeria').checked;
+            const concesionaria = document.getElementById('concesionaria').checked;
+            
+            if (pizzeria) {
+                window.location.href = 'formulario.html'; 
+            } else if (concesionaria) {
+                window.location.href = 'cons.html'; 
+            } else {
+                alert("Por favor, selecciona una opción.");
+            }
+        }
+    </script>
 
 </body>
 </html>
