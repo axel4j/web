@@ -14,20 +14,13 @@
     <h2>Pizzas seleccionadas:</h2>
     <ul id="res-pizzas"></ul>
     
-    <h2>Dirección de entrega:</h2>
-    <p><strong>Calle:</strong> <span id="res-calle"></span></p>
-    <p><strong>Número:</strong> <span id="res-numero"></span></p>
-    <p><strong>Colonia:</strong> <span id="res-ciudad"></span></p>
-    <p><strong>Municipio:</strong> <span id="res-cp"></span></p>
-    <p><strong>Estado:</strong> <span id="res-pais"></span></p>
-
-    <h1>Selecciona el metodo de pago</h1>
+    <h1>Selecciona el metodo de entrega</h1>
     
     <h4 style="display: inline">Efectivo</h4>
-    <input type="radio" name="entrega" id="ConsLocal" value="Consumo local">
+    <input type="radio" name="entrega" id="ConsLocal" value="">
     
     <h4 style="display: inline">Tarjeta</h4>
-    <input type="radio" name="entrega" id="Envio" value="Envio a domicilio">
+    <input type="radio" name="entrega" id="Envio" value="">
     <button onclick="pagar()">Pagar</button>
 
     <script>
@@ -45,12 +38,6 @@
             li.textContent = pizza;
             pizzasList.appendChild(li);
         });
-
-        document.getElementById('res-calle').textContent = localStorage.getItem('calle');
-        document.getElementById('res-numero').textContent = localStorage.getItem('numero');
-        document.getElementById('res-ciudad').textContent = localStorage.getItem('ciudad');
-        document.getElementById('res-cp').textContent = localStorage.getItem('cp');
-        document.getElementById('res-pais').textContent = localStorage.getItem('pais');
 
         function pagar() {
             // Verifica cuál opción de pago está seleccionada

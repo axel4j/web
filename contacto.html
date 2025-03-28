@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AxelRuns - Concesionaria de Autos</title>
+    <title>Contacto - AxelRuns</title>
     <link rel="stylesheet" href="css/decoracion.css">
 </head>
 <body>
     <header>
-        <h1>AxelRuns - Concesionaria de Autos</h1>
-        <p>¡Encuentra el auto de tus sueños aquí!</p>
+        <h1>AxelRuns - Contáctanos</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
@@ -21,10 +20,14 @@
         </nav>
     </header>
 
-    <section class="intro">
-        <h2>Bienvenido a AxelRuns</h2>
-        <p>Descubre nuestra exclusiva selección de autos deportivos clásicos y otros autos de alta gama.</p>
-        <p>Explora nuestras opciones y encuentra el auto perfecto para ti.</p>
+    <section class="contact-form">
+        <h2>Formulario de Contacto</h2>
+        <form id="contactForm">
+            <input type="text" id="contactName" name="contactName" placeholder="Nombre Completo" required>
+            <input type="email" id="contactEmail" name="contactEmail" placeholder="Correo Electrónico" required>
+            <textarea id="contactMessage" name="contactMessage" placeholder="Tu mensaje" required></textarea>
+            <button type="submit">Enviar Mensaje</button>
+        </form>
     </section>
 
     <script src="js/scripts.js"></script>
