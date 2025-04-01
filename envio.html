@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resumen de Pedido</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+<div class="container">
     <h1>Resumen de tu Pedido</h1>
     
     <p><strong>Nombre:</strong> <span id="res-nombre"></span></p>
@@ -29,39 +32,7 @@
     <h4 style="display: inline">Tarjeta</h4>
     <input type="radio" name="entrega" id="Envio" value="Envio a domicilio">
     <button onclick="pagar()">Pagar</button>
-
-    <script>
-        document.getElementById('res-nombre').textContent = localStorage.getItem('nombre');
-        document.getElementById('res-fecha').textContent = localStorage.getItem('fecha');
-
-        let pizzas = [];
-        pizzas.push(localStorage.getItem('pizza1'));
-        pizzas.push(localStorage.getItem('pizza2'));
-        pizzas.push(localStorage.getItem('pizza3'));
-
-        let pizzasList = document.getElementById('res-pizzas');
-        pizzas.forEach(pizza => {
-            let li = document.createElement('li');
-            li.textContent = pizza;
-            pizzasList.appendChild(li);
-        });
-
-        document.getElementById('res-calle').textContent = localStorage.getItem('calle');
-        document.getElementById('res-numero').textContent = localStorage.getItem('numero');
-        document.getElementById('res-ciudad').textContent = localStorage.getItem('ciudad');
-        document.getElementById('res-cp').textContent = localStorage.getItem('cp');
-        document.getElementById('res-pais').textContent = localStorage.getItem('pais');
-
-        function pagar() {
-            // Verifica cuál opción de pago está seleccionada
-            if (document.getElementById('Envio').checked) {
-                window.location.href = 'tarjeta.html'; // Redirige si selecciona tarjeta
-            } else if (document.getElementById('ConsLocal').checked) {
-                window.location.href = 'efectivo.html'; // Redirige si selecciona efectivo
-            } else {
-                alert('Por favor selecciona un método de pago.');
-            }
-        }
-    </script>
+</div>
+    <script src="resumen.js" defer></script>
 </body>
 </html>

@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Pago</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="container">
     <h1>Formulario de Pago</h1>
     <form id="tarjeta-form">
         <label for="tarjeta-numero">Número de tarjeta:</label>
@@ -22,24 +24,7 @@
 
         <button type="button" onclick="realizarPago()">Pagar</button>
     </form>
-
-    <script>
-        
-        function realizarPago() {
-           
-            let numeroTarjeta = document.getElementById('tarjeta-numero').value;
-            let nombreTarjeta = document.getElementById('tarjeta-nombre').value;
-            let fechaExpiracion = document.getElementById('tarjeta-fecha').value;
-            let cvc = document.getElementById('tarjeta-cvc').value;
-
-           
-            if (!numeroTarjeta || !nombreTarjeta || !fechaExpiracion || !cvc) {
-                alert("Por favor, complete todos los campos.");
-                return;
-            }
-            alert("¡Pago exitoso! Tu pedido ha sido realizado.");
-
-        }
-    </script>
+</div>
+    <script src="tar.js"></script>
 </body>
 </html>
