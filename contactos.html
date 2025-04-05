@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="header">
+        <a href="contactos.html">Contacto</a>
+        <a href="formulario.html">Pedido de Pizzas</a>
+    </div>
+    <div class="container">
+        <h1>Contacto</h1>
+        <p>Si tienes alguna pregunta o deseas hacer un comentario, por favor llena el formulario de contacto a continuación y nos pondremos en contacto contigo lo más pronto posible.</p>
+
+        
+        <form id="form-contacto">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required minlength="3" maxlength="50"><br><br>
+
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890"><br><br>
+
+            <label for="mensaje">Mensaje:</label><br>
+            <textarea id="mensaje" name="mensaje" rows="5" required></textarea><br><br>
+
+            <button type="button" id="generar-pdf">Generar PDF</button>
+        </form>
+    </div>
+
+    <script src="dats.js"></script>
+</body>
+</html>
