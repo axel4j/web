@@ -1,27 +1,43 @@
-document.getElementById('generar-pdf').addEventListener('click', function() {
-    // Obtener los valores del formulario
-    const nombre = document.getElementById('nombre').value;
-    const email = document.getElementById('email').value;
-    const telefono = document.getElementById('telefono').value;
-    const mensaje = document.getElementById('mensaje').value;
+function guardarDatos() {
+    let nombre = document.getElementById('name').value;
+    let fecha = document.getElementById('fecha').value;
+    let pizza1 = document.getElementById('pizza1').value;
+    let pizza2 = document.getElementById('pizza2').value;
+    let pizza3 = document.getElementById('pizza3').value;
+    let metodoEntrega = document.querySelector('input[name="entrega"]:checked')?.value;
 
-    // Verificar que todos los campos estén llenos
-    if (!nombre || !email || !telefono || !mensaje) {
+    
+    let precios = { "Mexicana": 10, "Pepperoni": 12, "Hawaiana": 11 };
+    let total = precios[pizza1] + precios[pizza2] + precios[pizza3];
+
+    
+    let quesoExtra = document.getElementById('QuesoExt').checked ? 2 : 0;
+    let refresco = document.getElementById('Refresco').checked ? 1.5 : 0;
+    let orillaQueso = document.getElementById('OrQueso').checked ? 2.5 : 0;
+    let papas = document.getElementById('Papas').checked ? 3 : 0;
+
+    let extras = quesoExtra + refresco + orillaQueso + papas;
+    total += extras;
+
+    
+    if (!nombre || !fecha || !pizza1 || !pizza2 || !pizza3 || !metodoEntrega) {
         alert("Por favor, complete todos los campos.");
         return;
     }
 
-    // Crear el objeto PDF con jsPDF
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
+    
+    localStorage.setItem('nombre', nombre);
+    localStorage.setItem('fecha', fecha);
+    localStorage.setItem('pizza1', pizza1);
+    localStorage.setItem('pizza2', pizza2);
+    localStorage.setItem('pizza3', pizza3);
+    localStorage.setItem('metodoEntrega', metodoEntrega);
+    localStorage.setItem('total', total);
 
-    // Agregar contenido al PDF
-    doc.text('Formulario de Contacto', 10, 10);
-    doc.text(`Nombre: ${nombre}`, 10, 20);
-    doc.text(`Correo Electrónico: ${email}`, 10, 30);
-    doc.text(`Teléfono: ${telefono}`, 10, 40);
-    doc.text(`Mensaje: ${mensaje}`, 10, 50);
-
-    // Guardar el archivo PDF
-    doc.save('contacto.pdf');
-});
+    
+    if (metodoEntrega === "Consumo local") {
+        window.location.href = 'envio2.html';  
+    } else if (metodoEntrega === "Envio a domicilio") {
+        window.location.href = 'datos.html';  
+    }
+}
