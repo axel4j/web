@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Agendar Prueba de Manejo | Runsaxzg</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header>
+    <h1>Agendar Prueba de Manejo - Runsaxzg</h1>
+    <nav>
+      <a href="cons.html">Inicio</a>
+      <a href="deportivos.html">Deportivos</a>
+      <a href="clasicos.html">Clásicos</a>
+      <a href="todoterreno.html">Todoterreno</a>
+      <a href="contactanos.html">Contáctanos</a>
+    </nav>
+  </header>
+
+  <main>
+    <form class="formulario-prueba">
+      <label for="nombre">Nombre completo:</label>
+      <input type="text" id="nombre" required>
+
+      <label for="correo">Correo electrónico:</label>
+      <input type="email" id="correo" required>
+
+      <label for="telefono">Teléfono:</label>
+      <input type="tel" id="telefono" required>
+
+      <label for="tipo-auto">Tipo de auto:</label>
+      <select id="tipo-auto">
+        <option value="deportivo">Deportivo</option>
+        <option value="clasico">Clásico</option>
+        <option value="todoterreno">Todoterreno</option>
+      </select>
+
+      <label for="fecha">Fecha deseada:</label>
+      <input type="date" id="fecha" required>
+
+      <button type="submit">Agendar</button>
+    </form>
+  </main>
+
+  <script src="js/script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</body>
+</html>

@@ -1,72 +1,81 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autos Deportivos Clásicos - AxelRuns</title>
-    <link rel="stylesheet" href="css/decoracion.css">
+  <meta charset="UTF-8">
+  <title>Autos Deportivos | Runsaxzg</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
-    <header>
-        <h1>AxelRuns - Autos Deportivos Clásicos</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="deportivos.html">Autos Deportivos Clásicos</a></li>
-                <li><a href="otros.html">Otros Autos</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-                <li><a href="registro.html">Registro</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <h1>Autos Deportivos - Runsaxzg</h1>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="clasicos.html">Clásicos</a>
+      <a href="todoterreno.html">Todoterreno</a>
+      <a href="contactanos.html">Contáctanos</a>
+      <a href="prueba-manejo.html">Agendar Prueba</a>
+    </nav>
+  </header>
 
-    <section class="cars">
-        <h2>Autos Deportivos Clásicos en Venta</h2>
+  <main class="catalogo">
+    <div class="auto">
+      <img src="img/deportivo1.jpg" alt="Modelo X1">
+      <h3>Modelo X1</h3>
+      <p>Alta velocidad y tecnología de punta.</p>
+      <p><strong>Precio: $100,000 USD</strong></p>
+      <button onclick="comprar('Modelo X1', 100000)">Comprar</button>
+    </div>
 
-        <div class="car">
-            <img src="img/deportivo1.jpg" alt="Deportivo 1">
-            <h3>Ferrari 250 GTO</h3>
-            <p>Precio: $60,000,000</p>
-            <a href="contacto.html">Solicitar más información</a>
-        </div>
+    <div class="auto">
+      <img src="img/deportivo2.jpg" alt="Rápido GT">
+      <h3>Rápido GT</h3>
+      <p>Diseñado para la pista y la ciudad.</p>
+      <p><strong>Precio: $90,000 USD</strong></p>
+      <button onclick="comprar('Rápido GT', 90000)">Comprar</button>
+    </div>
 
-        <div class="car">
-            <img src="img/deportivo2.jpg" alt="Deportivo 2">
-            <h3>Porsche 911 Turbo</h3>
-            <p>Precio: $50,000,000</p>
-            <a href="contacto.html">Solicitar más información</a>
-        </div>
+    <div class="auto">
+      <img src="img/deportivo3.jpg" alt="Furia RS">
+      <h3>Furia RS</h3>
+      <p>Potencia que se siente desde el arranque.</p>
+      <p><strong>Precio: $120,000 USD</strong></p>
+      <button onclick="comprar('Furia RS', 120000)">Comprar</button>
+    </div>
 
-        <div class="car">
-            <img src="img/deportivo3.jpg" alt="Deportivo 3">
-            <h3>Chevrolet Corvette Stingray</h3>
-            <p>Precio: $45,000,000</p>
-            <a href="contacto.html">Solicitar más información</a>
-        </div>
+    <div class="auto">
+      <img src="img/deportivo4.jpg" alt="Turbo Z">
+      <h3>Turbo Z</h3>
+      <p>Motor V8 y aerodinámica avanzada.</p>
+      <p><strong>Precio: $115,000 USD</strong></p>
+      <button onclick="comprar('Turbo Z', 115000)">Comprar</button>
+    </div>
 
-        <div class="car">
-            <img src="img/deportivo4.jpg" alt="Deportivo 4">
-            <h3>Jaguar E-Type</h3>
-            <p>Precio: $55,000,000</p>
-            <a href="contacto.html">Solicitar más información</a>
-        </div>
+    <div class="auto">
+      <img src="img/deportivo5.jpg" alt="Velocity">
+      <h3>Velocity</h3>
+      <p>Diseño moderno y máximo rendimiento.</p>
+      <p><strong>Precio: $110,000 USD</strong></p>
+      <button onclick="comprar('Velocity', 110000)">Comprar</button>
+    </div>
 
-        <div class="car">
-            <img src="img/deportivo5.jpg" alt="Deportivo 5">
-            <h3>Mercedes-Benz 300SL</h3>
-            <p>Precio: $70,000,000</p>
-            <a href="contacto.html">Solicitar más información</a>
-        </div>
+    <div class="auto">
+      <img src="img/deportivo6.jpg" alt="Storm R">
+      <h3>Storm R</h3>
+      <p>Agilidad, poder y clase en cada curva.</p>
+      <p><strong>Precio: $125,000 USD</strong></p>
+      <button onclick="comprar('Storm R', 125000)">Comprar</button>
+    </div>
+  </main>
 
-        <div class="car">
-            <img src="img/deportivo6.jpg" alt="Deportivo 6">
-            <h3>Aston Martin DB5</h3>
-            <p>Precio: $80,000,000</p>
-            <a href="contacto.html">Solicitar más información</a>
-        </div>
+  <div id="formulario-compra" class="form-popup" style="display: none;">
+    <h3>Finalizar compra</h3>
+    <label for="nombre-comprador">Nombre del comprador:</label>
+    <input type="text" id="nombre-comprador" placeholder="Escribe tu nombre">
+    <button onclick="generarPDF()">Generar Certificado</button>
+    <button onclick="cerrarFormulario()">Cancelar</button>
+  </div>
 
-    </section>
-
-    <script src="js/scripts.js"></script>
+  <script src="js/compras.js"></script>
 </body>
 </html>

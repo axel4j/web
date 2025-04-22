@@ -1,14 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Autos Clásicos | Runsaxzg</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Autos Clásicos - Runsaxzg</h1>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="deportivos.html">Deportivos</a>
+      <a href="todoterreno.html">Todoterreno</a>
+      <a href="contactanos.html">Contáctanos</a>
+      <a href="prueba-manejo.html">Agendar Prueba</a>
+    </nav>
+  </header>
 
-        <h2>Ford Mustang 1965</h2>
-        <p>Precio: $45,000</p>
+  <main class="catalogo">
+    <div class="auto">
+      <img src="img/clasico1.jpg" alt="Ford Mustang 1969">
+      <h3>Ford Mustang 1969</h3>
+      <p>Un ícono del músculo americano.</p>
+      <p><strong>Precio: $60,000 USD</strong></p>
+      <button onclick="comprar('Ford Mustang 1969', 60000)">Comprar</button>
     </div>
 
-    <div class="carro">
-        <h2>Ferrari 250 GTO 1962</h2>
-        <p>Precio: $48,000,000</p>
+    <div class="auto">
+      <img src="img/clasico2.jpg" alt="Chevy Bel Air">
+      <h3>Chevy Bel Air</h3>
+      <p>Elegancia y estilo vintage inolvidable.</p>
+      <p><strong>Precio: $55,000 USD</strong></p>
+      <button onclick="comprar('Chevy Bel Air', 55000)">Comprar</button>
+    </div>
+    <div class="auto">
+      <img src="img/clasico3.jpg" alt="VW Escarabajo">
+      <h3>VW Escarabajo</h3>
+      <p>Simplicidad y durabilidad legendaria.</p>
+      <p><strong>Precio: $18,000 USD</strong></p>
+      <button onclick="comprar('VW Escarabajo', 18000)">Comprar</button>
+    </div>
+    <div class="auto">
+      <img src="img/clasico4.jpg" alt="Jaguar E-Type">
+      <h3>Jaguar E-Type</h3>
+      <p>Diseño británico de otro nivel.</p>
+      <p><strong>Precio: $72,000 USD</strong></p>
+      <button onclick="comprar('Jaguar E-Type', 72000)">Comprar</button>
+    </div>
+    <div class="auto">
+      <img src="img/clasico5.jpg" alt="Ford Falcon">
+      <h3>Ford Falcon</h3>
+      <p>Tradición y potencia en un solo auto.</p>
+      <p><strong>Precio: $50,000 USD</strong></p>
+      <button onclick="comprar('Ford Falcon', 50000)">Comprar</button>
     </div>
 
-    <a href="menu.html">Volver al Menú</a>
+    <div class="auto">
+      <img src="img/clasico6.jpg" alt="Dodge Charger 69">
+      <h3>Dodge Charger 69</h3>
+      <p>Una leyenda sobre ruedas.</p>
+      <p><strong>Precio: $65,000 USD</strong></p>
+      <button onclick="comprar('Dodge Charger 69', 65000)">Comprar</button>
+    </div>
+  </main>
 
+  <div id="formulario-compra" class="form-popup" style="display: none;">
+    <h3>Finalizar compra</h3>
+    <label for="nombre-comprador">Nombre del comprador:</label>
+    <input type="text" id="nombre-comprador" placeholder="Escribe tu nombre">
+    <button onclick="generarPDF()">Generar Certificado</button>
+    <button onclick="cerrarFormulario()">Cancelar</button>
+  </div>
+
+  <script src="js/compras.js"></script>
 </body>
 </html>
