@@ -14,13 +14,21 @@
       <a href="clasicos.html">Clásicos</a>
       <a href="todoterreno.html">Todoterreno</a>
       <a href="prueba-manejo.html">Agendar Prueba</a>
-      <a href="mapa.html">sucursales</a>
+      <a href="mapa.html">Sucursales</a>
     </nav>
   </header>
 
   <main>
     <section class="formulario-container">
-      <form class="formulario-prueba" id="contacto-form">
+      <form 
+        action="https://formsubmit.co/runsaxzg@gmail.com" 
+        method="POST"
+        class="formulario-prueba" 
+        id="contacto-form"
+      >
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="">
+
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required>
 
@@ -32,14 +40,38 @@
 
         <button type="submit">Enviar mensaje</button>
       </form>
+
+      <!-- Mensaje de éxito -->
+      <p id="mensaje-exito" style="display: none; color: green; font-weight: bold; margin-top: 10px;">
+        ¡Mensaje enviado correctamente!
+      </p>
     </section>
   </main>
 
   <script>
-    document.getElementById('contacto-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('¡Mensaje enviado correctamente!');
-      this.reset();
+    const form = document.getElementById('contacto-form');
+    const mensajeExito = document.getElementById('mensaje-exito');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault(); // Evita la redirección
+      const formData = new FormData(form);
+
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          mensajeExito.style.display = 'block';
+          form.reset();
+        } else {
+          alert('Hubo un error al enviar el mensaje. Intenta de nuevo.');
+        }
+      }).catch(error => {
+        alert('Error de red. Intenta más tarde.');
+      });
     });
   </script>
 </body>
