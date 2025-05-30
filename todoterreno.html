@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Autos Todoterreno | Runsaxzg</title>
-  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="estilos1.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
@@ -15,6 +15,7 @@
       <a href="clasicos.html">Clásicos</a>
       <a href="contactanos.html">Contáctanos</a>
       <a href="prueba-manejo.html">Agendar Prueba</a>
+      <a href="mapa.html">sucursales</a>
     </nav>
   </header>
 
@@ -63,16 +64,35 @@
     </div>
   </section>
 
-  
-  <div id="formulario-compra" class="form-popup" style="display: none;">
-    <h3>Finalizar compra</h3>
-    <label for="nombre-comprador">Nombre del comprador:</label>
-    <input type="text" id="nombre-comprador" placeholder="Escribe tu nombre">
-    <button onclick="generarPDF()">Generar Certificado</button>
-    <button onclick="cerrarFormulario()">Cancelar</button>
+  <!-- Formulario de compra completo -->
+  <div id="formulario-compra" style="display:none; border: 1px solid #ccc; padding: 20px; margin: 30px auto; width: 300px; background-color: #f9f9f9;">
+    <h3>Compra de auto</h3>
+    <p>Modelo: <span id="modeloSeleccionado"></span></p>
+
+    <label>Nombre del comprador:</label><br>
+    <input type="text" id="nombreComprador" style="width: 100%;"><br><br>
+
+    <label>Método de pago:</label><br>
+    <select id="metodoPago" onchange="mostrarCamposTarjeta()" style="width: 100%;">
+      <option value="tarjeta">Tarjeta</option>
+      <option value="efectivo">Efectivo</option>
+    </select><br><br>
+
+    <div id="camposTarjeta" style="display:none;">
+      <label>Número de tarjeta:</label><br>
+      <input type="text" id="numeroTarjeta" maxlength="16" style="width: 100%;"><br><br>
+
+      <label>Vencimiento (MM/AA):</label><br>
+      <input type="text" id="vencimiento" placeholder="MM/AA" style="width: 100%;"><br><br>
+
+      <label>CVV:</label><br>
+      <input type="text" id="cvv" maxlength="3" style="width: 100%;"><br><br>
+    </div>
+
+    <button onclick="generarPDF()">Finalizar compra</button>
+    <button onclick="cerrarFormulario()" style="margin-left: 10px;">Cancelar</button>
   </div>
 
   <script src="compras.js"></script>
 </body>
 </html>
-

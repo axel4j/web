@@ -6,7 +6,7 @@
 }
 
 body {
-  background: url('uf1.jpg') no-repeat center center fixed;
+  background: url('fondo.jpg') no-repeat center center fixed;
   background-size: cover;
   color: #333;
   line-height: 1.6;
@@ -122,9 +122,9 @@ button:hover {
 }
 
 .auto {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.377);
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgb(0, 0, 0);
   padding: 15px;
   text-align: center;
   transition: transform 0.2s ease;
@@ -212,4 +212,83 @@ button:hover {
 
 #formulario-compra button:last-of-type:hover {
   background-color: #c0392b;
+}
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 20px;
+}
+
+.formulario-prueba {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 30px 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 450px;
+}
+
+.formulario-prueba label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+.formulario-prueba input,
+.formulario-prueba select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 18px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.formulario-prueba button {
+  width: 100%;
+  padding: 12px;
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+  opacity: 0.9;
+}
+
+.formulario-prueba button:hover {
+  background-color: #219150;
+  opacity: 1;
+}
+.formulario-prueba textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  margin-bottom: 18px;
+  resize: vertical;
+}
+/* Mapa de sucursales */
+#mapa {
+  height: 500px;
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  border: 2px solid #2980b9;
+}
+
+/* Título del mapa */
+main h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-top: 30px;
+  color: #ffffff;
 }

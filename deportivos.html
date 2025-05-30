@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Autos Deportivos | Runsaxzg</title>
-  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="estilos1.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
@@ -15,6 +15,7 @@
       <a href="todoterreno.html">Todoterreno</a>
       <a href="contactanos.html">Contáctanos</a>
       <a href="prueba-manejo.html">Agendar Prueba</a>
+      <a href="mapa.html">sucursales</a>
     </nav>
   </header>
 
@@ -72,6 +73,24 @@
     <h3>Finalizar compra</h3>
     <label for="nombre-comprador">Nombre del comprador:</label>
     <input type="text" id="nombre-comprador" placeholder="Escribe tu nombre">
+
+    <!-- Selección de método de pago -->
+    <label for="metodo-pago">Método de pago:</label>
+    <select id="metodo-pago" onchange="mostrarCamposPago()">
+      <option value="efectivo">Efectivo</option>
+      <option value="tarjeta">Tarjeta</option>
+    </select>
+
+    <!-- Campos de tarjeta que se mostrarán si el usuario selecciona tarjeta -->
+    <div id="camposTarjeta" style="display: none;">
+      <label for="numero-tarjeta">Número de tarjeta:</label>
+      <input type="text" id="numero-tarjeta" placeholder="Escribe el número de tarjeta" maxlength="16">
+      <label for="vencimiento">Vencimiento (MM/AA):</label>
+      <input type="text" id="vencimiento" placeholder="MM/AA">
+      <label for="cvv">CVV:</label>
+      <input type="text" id="cvv" placeholder="CVV" maxlength="3">
+    </div>
+
     <button onclick="generarPDF()">Generar Certificado</button>
     <button onclick="cerrarFormulario()">Cancelar</button>
   </div>

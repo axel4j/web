@@ -1,42 +1,46 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seleccionar Trabajo</title>
-    <link rel="stylesheet" href="estilos.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seleccionar Trabajo</title>
+  <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
-    <h1>BIENVENIDO </h1>
-    <h2>selecciona la opcion de tu agrado</h2>
-    <div class="container">
-        <form id="trabajoForm" action="" method="post">
-            <label>
-                <input type="radio" name="trabajo" value="pizzeria" id="pizzeria"> Pizzería
-            </label>
-            <label>
-                <input type="radio" name="trabajo" value="concesionaria" id="concesionaria"> Concesionaria
-            </label>
-            <br>
-            <button type="button" class="submit-btn" onclick="redireccionar()">Enviar</button>
-        </form>
-    </div>
+  <header>
+    <img src="logo.jpg" alt="Logo de Runsaxzg">
+    <h1>BIENVENIDO</h1>
+  </header>
 
-    <script>
-        function redireccionar() {
-            const pizzeria = document.getElementById('pizzeria').checked;
-            const concesionaria = document.getElementById('concesionaria').checked;
-            
-            if (pizzeria) {
-                window.location.href = 'formulario.html'; 
-            } else if (concesionaria) {
-                window.location.href = 'cons.html'; 
-            } else {
-                alert("Por favor, selecciona una opción.");
-            }
-        }
-    </script>
+  <div class="container">
+    <h2>Selecciona la opción de tu agrado</h2>
+    <form id="trabajoForm" action="" method="post">
+      <label>
+        <input type="radio" name="trabajo" value="pizzeria" id="pizzeria"> Pizzería
+      </label>
+      <label>
+        <input type="radio" name="trabajo" value="concesionaria" id="concesionaria"> Concesionaria
+      </label>
+      <br>
+      <button type="button" class="submit-btn" onclick="redireccionar()">Enviar</button>
+    </form>
+  </div>
+
+  <script>
+    function redireccionar() {
+      const pizzeria = document.getElementById('pizzeria').checked;
+      const concesionaria = document.getElementById('concesionaria').checked;
+      
+      if (pizzeria) {
+        window.location.href = 'formulario.html'; 
+      } else if (concesionaria) {
+        window.location.href = 'cons.html'; 
+      } else {
+        alert("Por favor, selecciona una opción.");
+      }
+    }
+  </script>
 
 </body>
 </html>

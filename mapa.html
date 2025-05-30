@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mapa de Sucursales | Runsaxzg</title>
+  <link rel="stylesheet" href="estilos1.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    #mapa {
+      height: 500px;
+      width: 90%;
+      margin: 30px auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    h2 {
+      text-align: center;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Mapa de Sucursales - Runsaxzg</h1>
+    <nav>
+      <a href="cons.html">Inicio</a>
+      <a href="deportivos.html">Deportivos</a>
+      <a href="clasicos.html">Clásicos</a>
+      <a href="todoterreno.html">Todoterreno</a>
+      <a href="contactanos.html">Contáctanos</a>
+      <a href="prueba-manejo.html">Agendar Prueba</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Sucursales disponibles</h2>
+    <div id="mapa"></div>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const mapa = L.map('mapa').setView([23.6345, -102.5528], 5); // Centro de México
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(mapa);
+
+    // Generar 6 puntos aleatorios en México como ejemplo
+    const sucursales = [
+      { lat: 19.4326, lng: -99.1332, ciudad: 'CDMX' },
+      { lat: 20.6597, lng: -103.3496, ciudad: 'Guadalajara' },
+      { lat: 25.6866, lng: -100.3161, ciudad: 'Monterrey' },
+      { lat: 21.1619, lng: -86.8515, ciudad: 'Cancún' },
+      { lat: 17.0732, lng: -96.7266, ciudad: 'Oaxaca' },
+      { lat: 29.1026, lng: -110.9773, ciudad: 'Hermosillo' }
+    ];
+
+    sucursales.forEach(sucursal => {
+      L.marker([sucursal.lat, sucursal.lng])
+        .addTo(mapa)
+        .bindPopup(`<b>Sucursal Runsaxzg</b><br>${sucursal.ciudad}`);
+    });
+  </script>
+</body>
+</html>
