@@ -32,10 +32,11 @@
     </nav>
   </header>
 
-  <main>
-    <h2>Sucursales disponibles</h2>
-    <div id="mapa"></div>
-  </main>
+  <div class="contenido">
+  <h2>Sucursales disponibles</h2>
+  <div id="mapa"></div>
+</div>
+
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
@@ -45,7 +46,7 @@
       attribution: '© OpenStreetMap contributors'
     }).addTo(mapa);
 
-    // Generar 6 puntos aleatorios en México como ejemplo
+    
     const sucursales = [
       { lat: 19.4326, lng: -99.1332, ciudad: 'CDMX' },
       { lat: 20.6597, lng: -103.3496, ciudad: 'Guadalajara' },
