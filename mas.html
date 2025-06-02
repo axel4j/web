@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Catálogo Detallado | Runsaxzg</title>
+  <link rel="stylesheet" href="estilos.css"> <!-- Asegúrate de que apunta a tu CSS unificado -->
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Logo">
+    <h1>Catálogo Detallado de Autos</h1>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="deportivos.html">Deportivos</a>
+      <a href="clasicos.html">Clásicos</a>
+      <a href="todoterreno.html">Todoterreno</a>
+      <a href="mas.html">Todos</a>
+    </nav>
+  </header>
+
+  <div class="catalogo" id="lista-autos">
+    <div class="auto" data-marca="Toyota" data-modelo="Corolla">
+      <h3>Toyota Corolla</h3>
+    </div>
+    <div class="auto" data-marca="Ford" data-modelo="Mustang">
+      <h3>Ford Mustang</h3>
+    </div>
+    <div class="auto" data-marca="Chevrolet" data-modelo="Camaro">
+      <h3>Chevrolet Camaro</h3>
+    </div>
+    <div class="auto" data-marca="BMW" data-modelo="M3">
+      <h3>BMW M3</h3>
+    </div>
+    <div class="auto" data-marca="Nissan" data-modelo="370Z">
+      <h3>Nissan 370Z</h3>
+    </div>
+    <div class="auto" data-marca="Dodge" data-modelo="Charger">
+      <h3>Dodge Charger</h3>
+    </div>
+  </div>
+
+  <div class="container" id="detalle-auto">
+    <h2>Selecciona un auto para ver los detalles técnicos</h2>
+  </div>
+
+  <script>
+    const API_KEY = "DGUKDsinC1VtuP224znwqg==ocWHo80wCVzUMHUX";
+
+    document.querySelectorAll('.auto').forEach(item => {
+      item.addEventListener('click', () => {
+        const marca = item.dataset.marca.toLowerCase();
+        const modelo = item.dataset.modelo.toLowerCase();
+
+        fetch(`https://api.api-ninjas.com/v1/cars?make=${marca}&model=${modelo}`, {
+          headers: { 'X-Api-Key': API_KEY }
+        })
+        .then(response => response.json())
+        .then(data => {
+          const auto = data[0];
+          const detalle = document.getElementById('detalle-auto');
+          if (auto) {
+            detalle.innerHTML = `
+              <h2>${auto.make} ${auto.model} (${auto.year})</h2>
+              <ul style="text-align: left;">
+                <li><strong>Combustible:</strong> ${auto.fuel_type}</li>
+                <li><strong>Tracción:</strong> ${auto.drivetrain}</li>
+                <li><strong>Transmisión:</strong> ${auto.transmission}</li>
+                <li><strong>Cilindros:</strong> ${auto.cylinders}</li>
+                <li><strong>Consumo (ciudad):</strong> ${auto.city_mpg} mpg</li>
+                <li><strong>Consumo (carretera):</strong> ${auto.highway_mpg} mpg</li>
+                <li><strong>Desplazamiento:</strong> ${auto.displacement} L</li>
+              </ul>
+            `;
+          } else {
+            detalle.innerHTML = `<p>No se encontraron detalles para ${marca} ${modelo}.</p>`;
+          }
+        })
+        .catch(err => {
+          console.error("Error:", err);
+          document.getElementById('detalle-auto').innerHTML = "<p>Error al cargar los datos.</p>";
+        });
+      });
+    });
+  </script>
+</body>
+</html>
