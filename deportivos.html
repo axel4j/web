@@ -15,7 +15,7 @@
       <a href="todoterreno.html">Todoterreno</a>
       <a href="contactanos.html">Contáctanos</a>
       <a href="prueba-manejo.html">Agendar Prueba</a>
-      <a href="mapa.html">sucursales</a>
+      <a href="mapa.html">Sucursales</a>
     </nav>
   </header>
 
@@ -26,6 +26,7 @@
       <p>Alta velocidad y tecnología de punta.</p>
       <p><strong>Precio: $100,000 USD</strong></p>
       <button onclick="comprar('Modelo X1', 100000)">Comprar</button>
+      <button onclick="conocerMas('Modelo x1')">Conocer más</button>
     </div>
 
     <div class="auto">
@@ -34,6 +35,7 @@
       <p>Diseñado para la pista y la ciudad.</p>
       <p><strong>Precio: $90,000 USD</strong></p>
       <button onclick="comprar('Rápido GT', 90000)">Comprar</button>
+      <button onclick="conocerMas('Rápido gt')">Conocer más</button>
     </div>
 
     <div class="auto">
@@ -42,6 +44,7 @@
       <p>Potencia que se siente desde el arranque.</p>
       <p><strong>Precio: $120,000 USD</strong></p>
       <button onclick="comprar('Furia RS', 120000)">Comprar</button>
+      <button onclick="conocerMas('Furia rs')">Conocer más</button>
     </div>
 
     <div class="auto">
@@ -50,6 +53,7 @@
       <p>Motor V8 y aerodinámica avanzada.</p>
       <p><strong>Precio: $115,000 USD</strong></p>
       <button onclick="comprar('Turbo Z', 115000)">Comprar</button>
+      <button onclick="conocerMas('Turbo x')">Conocer más</button>
     </div>
 
     <div class="auto">
@@ -58,6 +62,7 @@
       <p>Diseño moderno y máximo rendimiento.</p>
       <p><strong>Precio: $110,000 USD</strong></p>
       <button onclick="comprar('Velocity', 110000)">Comprar</button>
+      <button onclick="conocerMas('Velocity')">Conocer más</button>
     </div>
 
     <div class="auto">
@@ -66,25 +71,25 @@
       <p>Agilidad, poder y clase en cada curva.</p>
       <p><strong>Precio: $125,000 USD</strong></p>
       <button onclick="comprar('Storm R', 125000)">Comprar</button>
+      <button onclick="conocerMas('Storm r')">Conocer más</button>
     </div>
   </main>
 
+  <!-- FORMULARIO DE COMPRA -->
   <div id="formulario-compra" class="form-popup" style="display: none;">
     <h3>Finalizar compra</h3>
     <label for="nombre-comprador">Nombre del comprador:</label>
     <input type="text" id="nombre-comprador" placeholder="Escribe tu nombre">
 
-    <!-- Selección de método de pago -->
     <label for="metodo-pago">Método de pago:</label>
     <select id="metodo-pago" onchange="mostrarCamposPago()">
       <option value="efectivo">Efectivo</option>
       <option value="tarjeta">Tarjeta</option>
     </select>
 
-    <!-- Campos de tarjeta que se mostrarán si el usuario selecciona tarjeta -->
     <div id="camposTarjeta" style="display: none;">
       <label for="numero-tarjeta">Número de tarjeta:</label>
-      <input type="text" id="numero-tarjeta" placeholder="Escribe el número de tarjeta" maxlength="16">
+      <input type="text" id="numero-tarjeta" placeholder="Número de tarjeta" maxlength="16">
       <label for="vencimiento">Vencimiento (MM/AA):</label>
       <input type="text" id="vencimiento" placeholder="MM/AA">
       <label for="cvv">CVV:</label>
@@ -95,6 +100,41 @@
     <button onclick="cerrarFormulario()">Cancelar</button>
   </div>
 
+  <!-- VENTANA FLOTANTE DE ESPECIFICACIONES -->
+  <div id="info-especificaciones" class="form-popup" style="display: none;">
+    <h3>Especificaciones del auto</h3>
+    <p id="detalle-auto"></p>
+    <button onclick="cerrarEspecificaciones()">Cerrar</button>
+  </div>
+
+  <!-- JS FUNCIONES -->
   <script src="compras.js"></script>
+  <script>
+    function conocerMas(nombreModelo) {
+      fetch('info.json')
+        .then(response => {
+          if (!response.ok) throw new Error('No se pudo cargar el archivo JSON.');
+          return response.json();
+        })
+        .then(data => {
+          const auto = data.autos.find(
+            a => a.modelo.toLowerCase() === nombreModelo.toLowerCase()
+          );
+          if (auto) {
+            document.getElementById('detalle-auto').textContent = auto.descripcion;
+            document.getElementById('info-especificaciones').style.display = 'block';
+          } else {
+            alert('Modelo no encontrado.');
+          }
+        })
+        .catch(error => {
+          alert('Error al cargar especificaciones: ' + error.message);
+        });
+    }
+
+    function cerrarEspecificaciones() {
+      document.getElementById('info-especificaciones').style.display = 'none';
+    }
+  </script>
 </body>
 </html>

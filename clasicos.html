@@ -15,7 +15,7 @@
       <a href="todoterreno.html">Todoterreno</a>
       <a href="contactanos.html">Contáctanos</a>
       <a href="prueba-manejo.html">Agendar Prueba</a>
-      <a href="mapa.html">sucursales</a>
+      <a href="mapa.html">Sucursales</a>
     </nav>
   </header>
 
@@ -26,6 +26,7 @@
       <p>Un ícono del músculo americano.</p>
       <p><strong>Precio: $60,000 USD</strong></p>
       <button onclick="comprar('Ford Mustang 1969', 60000)">Comprar</button>
+      <button onclick="conocerMas('Ford Mustang 1969')">Conocer más</button>
     </div>
 
     <div class="auto">
@@ -34,6 +35,7 @@
       <p>Elegancia y estilo vintage inolvidable.</p>
       <p><strong>Precio: $55,000 USD</strong></p>
       <button onclick="comprar('Chevy Bel Air', 55000)">Comprar</button>
+      <button onclick="conocerMas('Chevy Bel Air')">Conocer más</button>
     </div>
     
     <div class="auto">
@@ -42,6 +44,7 @@
       <p>Simplicidad y durabilidad legendaria.</p>
       <p><strong>Precio: $18,000 USD</strong></p>
       <button onclick="comprar('VW Escarabajo', 18000)">Comprar</button>
+      <button onclick="conocerMas('VW Escarabajo')">Conocer más</button>
     </div>
 
     <div class="auto">
@@ -50,6 +53,7 @@
       <p>Diseño británico de otro nivel.</p>
       <p><strong>Precio: $72,000 USD</strong></p>
       <button onclick="comprar('Jaguar E-Type', 72000)">Comprar</button>
+      <button onclick="conocerMas('Jaguar E-Type')">Conocer más</button>
     </div>
 
     <div class="auto">
@@ -58,6 +62,7 @@
       <p>Tradición y potencia en un solo auto.</p>
       <p><strong>Precio: $50,000 USD</strong></p>
       <button onclick="comprar('Ford Falcon', 50000)">Comprar</button>
+      <button onclick="conocerMas('Ford Falcon')">Conocer más</button>
     </div>
 
     <div class="auto">
@@ -66,22 +71,22 @@
       <p>Una leyenda sobre ruedas.</p>
       <p><strong>Precio: $65,000 USD</strong></p>
       <button onclick="comprar('Dodge Charger 69', 65000)">Comprar</button>
+      <button onclick="conocerMas('Dodge Charger 69')">Conocer más</button>
     </div>
   </main>
 
+  <!-- Formulario de compra -->
   <div id="formulario-compra" class="form-popup" style="display: none;">
     <h3>Finalizar compra</h3>
     <label for="nombre-comprador">Nombre del comprador:</label>
     <input type="text" id="nombre-comprador" placeholder="Escribe tu nombre">
 
-    <!-- Selección de método de pago -->
     <label for="metodo-pago">Método de pago:</label>
     <select id="metodo-pago" onchange="mostrarCamposPago()">
       <option value="efectivo">Efectivo</option>
       <option value="tarjeta">Tarjeta</option>
     </select>
 
-    <!-- Campos de tarjeta que se mostrarán si el usuario selecciona tarjeta -->
     <div id="camposTarjeta" style="display: none;">
       <label for="numero-tarjeta">Número de tarjeta:</label>
       <input type="text" id="numero-tarjeta" placeholder="Escribe el número de tarjeta" maxlength="16">
@@ -95,6 +100,39 @@
     <button onclick="cerrarFormulario()">Cancelar</button>
   </div>
 
+  <!-- Especificaciones flotantes -->
+  <div id="info-especificaciones" class="form-popup" style="display: none;">
+    <h3>Especificaciones del auto</h3>
+    <p id="detalle-auto"></p>
+    <button onclick="cerrarEspecificaciones()">Cerrar</button>
+  </div>
+
+  <!-- JS -->
   <script src="compras.js"></script>
+  <script>
+    function conocerMas(nombreModelo) {
+      fetch('info.json')
+        .then(response => {
+          if (!response.ok) throw new Error('No se pudo cargar el archivo JSON.');
+          return response.json();
+        })
+        .then(data => {
+          const auto = data.autos.find(a => a.modelo.toLowerCase() === nombreModelo.toLowerCase());
+          if (auto) {
+            document.getElementById('detalle-auto').textContent = auto.descripcion;
+            document.getElementById('info-especificaciones').style.display = 'block';
+          } else {
+            alert('Modelo no encontrado en info.json');
+          }
+        })
+        .catch(error => {
+          alert('Error al cargar especificaciones: ' + error.message);
+        });
+    }
+
+    function cerrarEspecificaciones() {
+      document.getElementById('info-especificaciones').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
