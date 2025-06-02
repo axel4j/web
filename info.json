@@ -1,0 +1,76 @@
+{
+  "autos": [
+    {
+      "modelo": "Modelo x1",
+      "descripcion": "Un auto deportivo moderno, diseñado para ofrecer velocidad y un manejo ágil. Motor turbo de 2.0 litros y 250 caballos de fuerza. Tracción trasera con transmisión manual de 6 velocidades."
+    },
+    {
+      "modelo": "Rápido gt",
+      "descripcion": "Vehículo de alto rendimiento con un diseño aerodinámico y motor potente. Motor V6 de 3.5 litros que genera 320 caballos de fuerza. Tracción integral (AWD) para mejor agarre y estabilidad. Transmisión automática de 8 velocidades."
+    },
+    {
+      "modelo": "Furia rs",
+      "descripcion": "Auto deportivo con tecnología avanzada y un estilo agresivo para los amantes de la velocidad. Motor V8 de 5.0 litros con 450 caballos de fuerza. Tracción trasera y aceleración de 0 a 100 km/h en 4.2 segundos."
+    },
+    {
+      "modelo": "Turbo x",
+      "descripcion": "Diseñado para maximizar la potencia con un motor turbo cargado y rendimiento excepcional. Motor turbo de 2.5 litros y 280 caballos de fuerza. Tracción delantera con transmisión manual de 6 velocidades."
+    },
+    {
+      "modelo": "Velocity",
+      "descripcion": "Auto elegante que combina velocidad y comodidad para viajes largos. Motor V6 de 3.0 litros y 310 caballos de fuerza. Tracción trasera y caja automática de 7 velocidades."
+    },
+    {
+      "modelo": "Storm r",
+      "descripcion": "Vehículo robusto y rápido, ideal para carreteras exigentes y condiciones difíciles. Motor V8 de 5.2 litros que genera 480 caballos de fuerza. Tracción trasera deportiva con suspensión reforzada."
+    },
+    {
+      "modelo": "Ford Mustang 1969",
+      "descripcion": "Clásico muscle car americano, símbolo de poder y estilo vintage. Motor V8 de 5.8 litros y 290 caballos de fuerza. Tracción trasera y transmisión manual de 4 velocidades."
+    },
+    {
+      "modelo": "Chevy bel air",
+      "descripcion": "Un ícono de los años 50, conocido por su diseño clásico y elegancia atemporal. Motor V8 de 4.6 litros que produce 250 caballos de fuerza. Tracción trasera y caja automática de 3 velocidades."
+    },
+    {
+      "modelo": "Vw escarabajo",
+      "descripcion": "Pequeño y confiable, un auto con gran historia y popularidad mundial. Motor bóxer de 1.2 litros con 40 caballos de fuerza. Tracción trasera y transmisión manual de 4 velocidades."
+    },
+    {
+      "modelo": "Jaguar e-type",
+      "descripcion": "Auto deportivo británico famoso por su belleza y rendimiento en los años 60. Motor inline 6 de 3.8 litros y 265 caballos de fuerza. Tracción trasera y transmisión manual de 4 velocidades."
+    },
+    {
+      "modelo": "Ford Falcón",
+      "descripcion": "Sedán clásico conocido por su durabilidad y diseño sencillo. Motor 4 cilindros de 2.0 litros y 120 caballos de fuerza. Tracción trasera y transmisión manual de 3 velocidades."
+    },
+    {
+      "modelo": "Dodge chárger 69",
+      "descripcion": "Muscle car americano con un motor potente y diseño imponente. Motor V8 de 7.0 litros y 375 caballos de fuerza. Tracción trasera y transmisión manual de 4 velocidades."
+    },
+    {
+      "modelo": "Jeep wrangler",
+      "descripcion": "Vehículo todoterreno icónico, ideal para aventuras extremas fuera de la carretera. Motor V6 de 3.6 litros y 285 caballos de fuerza. Tracción 4x4 con caja manual o automática."
+    },
+    {
+      "modelo": "Ford bronco",
+      "descripcion": "SUV robusto con capacidad para enfrentar terrenos difíciles y un diseño retro. Motor V6 turbo de 2.7 litros y 310 caballos de fuerza. Tracción 4x4 con transmisión automática de 10 velocidades."
+    },
+    {
+      "modelo": "Land Rover defender",
+      "descripcion": "Vehículo todoterreno legendario, conocido por su resistencia y versatilidad. Motor 4 cilindros turbo de 2.0 litros y 240 caballos de fuerza. Tracción 4x4 permanente con caja automática de 8 velocidades."
+    },
+    {
+      "modelo": "Toyota hilux",
+      "descripcion": "Camioneta confiable y resistente, popular para trabajo y uso off-road. Motor diésel turbo de 2.8 litros y 201 caballos de fuerza. Tracción 4x4 con caja manual o automática de 6 velocidades."
+    },
+    {
+      "modelo": "Chevrolet trailblazer",
+      "descripcion": "SUV cómodo y espacioso, perfecto para la familia y viajes largos. Motor 4 cilindros turbo de 2.0 litros y 228 caballos de fuerza. Tracción delantera o AWD, con transmisión automática de 9 velocidades."
+    },
+    {
+      "modelo": "Nissan frontier",
+      "descripcion": "Pickup versátil con buena capacidad de carga y desempeño confiable. Motor V6 de 4.0 litros y 261 caballos de fuerza. Tracción trasera o 4x4, con caja automática o manual."
+    }
+  ]
+}

@@ -1,10 +1,57 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Autos Todoterreno | Runsaxzg</title>
-  <link rel="stylesheet" href="estilos1.css">
+  <link rel="stylesheet" href="estilos1.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    /* Estilos para el formulario flotante de especificaciones */
+    #form-especificaciones {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      border: 2px solid #333;
+      border-radius: 8px;
+      padding: 20px;
+      width: 320px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+      z-index: 1000;
+    }
+    #form-especificaciones h3 {
+      margin-top: 0;
+    }
+    #form-especificaciones button.cerrar {
+      background-color: #c0392b;
+      border: none;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      float: right;
+      font-size: 14px;
+    }
+    #form-especificaciones p {
+      margin: 8px 0;
+      font-size: 14px;
+    }
+    /* Fondo overlay */
+    #overlay-especificaciones {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 900;
+    }
+    /* Botones inline */
+    .auto button {
+      margin-right: 8px;
+      margin-top: 8px;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -21,78 +68,147 @@
 
   <section class="catalogo">
     <div class="auto">
-      <img src="todoterreno1.jpg" alt="4x4 1">
+      <img src="todoterreno1.jpg" alt="4x4 1" />
       <h3>Jeep Wrangler</h3>
       <p>Listo para cualquier terreno.</p>
       <p><strong>Precio: $50,000 USD</strong></p>
       <button onclick="comprar('Jeep Wrangler', 50000)">Comprar</button>
+      <button onclick="mostrarEspecificaciones('Jeep Wrangler')">Conocer más</button>
     </div>
     <div class="auto">
-      <img src="todoterreno2.jpg" alt="4x4 2">
+      <img src="todoterreno2.jpg" alt="4x4 2" />
       <h3>Ford Bronco</h3>
       <p>Robusto, confiable y aventurero.</p>
       <p><strong>Precio: $60,000 USD</strong></p>
       <button onclick="comprar('Ford Bronco', 60000)">Comprar</button>
+      <button onclick="mostrarEspecificaciones('Ford Bronco')">Conocer más</button>
     </div>
     <div class="auto">
-      <img src="todoterreno3.jpg" alt="4x4 3">
+      <img src="todoterreno3.jpg" alt="4x4 3" />
       <h3>Land Rover Defender</h3>
       <p>Resistencia sin límites.</p>
       <p><strong>Precio: $85,000 USD</strong></p>
       <button onclick="comprar('Land Rover Defender', 85000)">Comprar</button>
+      <button onclick="mostrarEspecificaciones('Land Rover Defender')">Conocer más</button>
     </div>
     <div class="auto">
-      <img src="todoterreno4.jpg" alt="4x4 4">
+      <img src="todoterreno4.jpg" alt="4x4 4" />
       <h3>Toyota Hilux</h3>
       <p>La leyenda del trabajo pesado.</p>
       <p><strong>Precio: $45,000 USD</strong></p>
       <button onclick="comprar('Toyota Hilux', 45000)">Comprar</button>
+      <button onclick="mostrarEspecificaciones('Toyota Hilux')">Conocer más</button>
     </div>
     <div class="auto">
-      <img src="todoterreno5.jpg" alt="4x4 5">
+      <img src="todoterreno5.jpg" alt="4x4 5" />
       <h3>Chevrolet Trailblazer</h3>
       <p>Comodidad y poder en uno.</p>
       <p><strong>Precio: $40,000 USD</strong></p>
       <button onclick="comprar('Chevrolet Trailblazer', 40000)">Comprar</button>
+      <button onclick="mostrarEspecificaciones('Chevrolet Trailblazer')">Conocer más</button>
     </div>
     <div class="auto">
-      <img src="todoterreno6.jpg" alt="4x4 6">
+      <img src="todoterreno6.jpg" alt="4x4 6" />
       <h3>Nissan Frontier</h3>
       <p>Versátil y fuerte para el camino.</p>
       <p><strong>Precio: $38,000 USD</strong></p>
       <button onclick="comprar('Nissan Frontier', 38000)">Comprar</button>
+      <button onclick="mostrarEspecificaciones('Nissan Frontier')">Conocer más</button>
     </div>
   </section>
 
+  <!-- Formulario flotante para especificaciones -->
+  <div id="overlay-especificaciones"></div>
+  <div id="form-especificaciones">
+    <button class="cerrar" onclick="cerrarEspecificaciones()">X</button>
+    <h3 id="especModelo"></h3>
+    <p id="especDescripcion"></p>
+  </div>
+
   <!-- Formulario de compra completo -->
-  <div id="formulario-compra" style="display:none; border: 1px solid #ccc; padding: 20px; margin: 30px auto; width: 300px; background-color: #f9f9f9;">
+  <div
+    id="formulario-compra"
+    style="display: none; border: 1px solid #ccc; padding: 20px; margin: 30px auto; width: 300px; background-color: #f9f9f9"
+  >
     <h3>Compra de auto</h3>
     <p>Modelo: <span id="modeloSeleccionado"></span></p>
 
-    <label>Nombre del comprador:</label><br>
-    <input type="text" id="nombreComprador" style="width: 100%;"><br><br>
+    <label>Nombre del comprador:</label><br />
+    <input type="text" id="nombreComprador" style="width: 100%" /><br /><br />
 
-    <label>Método de pago:</label><br>
-    <select id="metodoPago" onchange="mostrarCamposTarjeta()" style="width: 100%;">
+    <label>Método de pago:</label><br />
+    <select id="metodoPago" onchange="mostrarCamposTarjeta()" style="width: 100%">
       <option value="tarjeta">Tarjeta</option>
       <option value="efectivo">Efectivo</option>
-    </select><br><br>
+    </select>
+    <br /><br />
 
-    <div id="camposTarjeta" style="display:none;">
-      <label>Número de tarjeta:</label><br>
-      <input type="text" id="numeroTarjeta" maxlength="16" style="width: 100%;"><br><br>
+    <div id="camposTarjeta" style="display: none">
+      <label>Número de tarjeta:</label><br />
+      <input type="text" id="numeroTarjeta" maxlength="16" style="width: 100%" /><br /><br />
 
-      <label>Vencimiento (MM/AA):</label><br>
-      <input type="text" id="vencimiento" placeholder="MM/AA" style="width: 100%;"><br><br>
+      <label>Vencimiento (MM/AA):</label><br />
+      <input type="text" id="vencimiento" placeholder="MM/AA" style="width: 100%" /><br /><br />
 
-      <label>CVV:</label><br>
-      <input type="text" id="cvv" maxlength="3" style="width: 100%;"><br><br>
+      <label>CVV:</label><br />
+      <input type="text" id="cvv" maxlength="3" style="width: 100%" /><br /><br />
     </div>
 
     <button onclick="generarPDF()">Finalizar compra</button>
-    <button onclick="cerrarFormulario()" style="margin-left: 10px;">Cancelar</button>
+    <button onclick="cerrarFormulario()" style="margin-left: 10px">Cancelar</button>
   </div>
 
-  <script src="compras.js"></script>
+  <script>
+    // Aquí quitamos el objeto de especificaciones y usamos JSON externo
+
+    async function mostrarEspecificaciones(modelo) {
+      try {
+        // Cargar info.json
+        const response = await fetch("info.json");
+        const data = await response.json();
+
+        // Buscar el auto que coincida con el modelo (ignorar mayúsculas/minúsculas)
+        const auto = data.autos.find(
+          (a) => a.modelo.toLowerCase() === modelo.toLowerCase()
+        );
+
+        const titulo = document.getElementById("especModelo");
+        const desc = document.getElementById("especDescripcion");
+
+        titulo.textContent = modelo;
+        desc.textContent = auto ? auto.descripcion : "No hay especificaciones disponibles.";
+
+        // Mostrar formulario y overlay
+        document.getElementById("overlay-especificaciones").style.display = "block";
+        document.getElementById("form-especificaciones").style.display = "block";
+      } catch (error) {
+        alert("Error al cargar especificaciones.");
+        console.error(error);
+      }
+    }
+
+    function cerrarEspecificaciones() {
+      document.getElementById("form-especificaciones").style.display = "none";
+      document.getElementById("overlay-especificaciones").style.display = "none";
+    }
+
+    function comprar(modelo, precio) {
+      document.getElementById("formulario-compra").style.display = "block";
+      document.getElementById("modeloSeleccionado").textContent = modelo;
+    }
+
+    function mostrarCamposTarjeta() {
+      const metodo = document.getElementById("metodoPago").value;
+      document.getElementById("camposTarjeta").style.display = metodo === "tarjeta" ? "block" : "none";
+    }
+
+    function generarPDF() {
+      alert("Compra finalizada. PDF generado."); // placeholder
+    }
+
+    function cerrarFormulario() {
+      document.getElementById("formulario-compra").style.display = "none";
+    }
+  </script>
 </body>
 </html>
